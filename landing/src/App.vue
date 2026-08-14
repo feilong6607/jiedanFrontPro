@@ -31,7 +31,7 @@ async function onSubmit() {
 
 // ===== 支付弹窗 =====
 const payModal = ref(false)
-const payChannel = ref('wechat')
+const payChannel = ref('alipay')
 const payOrder = ref(null)      // { orderId, payUrl, channel, license? }
 const payQr = ref('')
 const payError = ref('')
@@ -43,13 +43,13 @@ function stopPoll() { if (pollTimer) { clearInterval(pollTimer); pollTimer = nul
 
 async function openPay(product, name) {
   payProductName.value = name
-  payChannel.value = 'wechat'
+  payChannel.value = 'alipay'
   payError.value = ''
   payPaid.value = false
   payOrder.value = null
   payQr.value = ''
   payModal.value = true
-  await createOrder(product, 'wechat')
+  await createOrder(product, 'alipay')
 }
 
 async function createOrder(product, channel) {
@@ -284,7 +284,7 @@ const genUnlockUrl = computed(() =>
           <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
           <a href="#">使用条款</a>
           <a href="#">联系</a>
-          <a href="#">微信（可选钩子）</a>
+          <a href="#">支付宝支付</a>
         </div>
       </div>
     </footer>
@@ -295,14 +295,10 @@ const genUnlockUrl = computed(() =>
         <button class="modal-close" @click="closePay">×</button>
         <h3 v-if="!payPaid" class="modal-title">扫码支付 · {{ payProductName }}</h3>
         <div v-if="!payPaid">
-          <div class="pay-channels">
-            <button :class="['ch', { on: payChannel === 'wechat' }]" @click="createOrder(payOrder?.product || 'earlybird', 'wechat')">微信支付</button>
-            <button :class="['ch', { on: payChannel === 'alipay' }]" @click="createOrder(payOrder?.product || 'earlybird', 'alipay')">支付宝</button>
-          </div>
           <p v-if="payError" class="err-msg center">{{ payError }}</p>
           <div v-else-if="payQr" class="qr-wrap">
             <img :src="payQr" alt="支付二维码" class="qr" />
-            <p class="qr-tip">请用{{ payChannel === 'wechat' ? '微信' : '支付宝' }}扫一扫完成支付</p>
+            <p class="qr-tip">请用支付宝扫一扫完成支付</p>
             <p class="qr-status">支付后本页自动跳转解锁…</p>
           </div>
           <p v-else class="qr-tip center">正在生成订单…</p>
