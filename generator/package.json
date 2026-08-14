@@ -1,0 +1,20 @@
+{
+  "name": "jiedan-hudun-generator",
+  "version": "0.1.0",
+  "private": true,
+  "description": "接单护盾 - 偏后端程序员平台外私活防坑文档生成器（MVP）",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "marked": "^12.0.2",
+    "vue": "^3.4.27"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.5",
+    "vite": "^5.2.13"
+  }
+}

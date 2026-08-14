@@ -1,0 +1,9 @@
+# 后端代码不进前端仓库（后端另建仓库管理）
+backend/
+
+# 依赖与构建产物（各子目录也有自己的忽略规则）
+node_modules/
+dist/
+.DS_Store
+*.local
+.vite

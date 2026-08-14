@@ -1,0 +1,20 @@
+{
+  "name": "jiedan-hushen-landing",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "接单护盾落地页骨架 · 偏后端程序员平台外私活防坑工具包",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "qrcode": "^1.5.4",
+    "vue": "^3.4.21"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.4",
+    "vite": "^5.2.0"
+  }
+}
