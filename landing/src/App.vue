@@ -9,6 +9,10 @@ const GENERATOR_URL =
     ? 'http://127.0.0.1:4174/'
     : 'https://a550142c956a4753bbaed732edbc0e1f.gz1.agentos-app.net/'
 
+// ===== 付费版本展示开关（早鸟版 / 正式版）=====
+// 当前先关闭，后续补充内容时把 false 改为 true 即可恢复展示
+const showPaidTiers = ref(false)
+
 // ===== 邮箱订阅 =====
 const email = ref('')
 const subscribed = ref(false)
@@ -245,7 +249,7 @@ const genUnlockUrl = computed(() =>
             </ul>
             <a class="btn btn-ghost btn-block" :href="GENERATOR_URL" target="_blank" rel="noopener">打开免费版</a>
           </div>
-          <div class="tier tier--hot">
+          <div v-if="showPaidTiers" class="tier tier--hot">
             <div class="tier-flag">前 100 名</div>
             <div class="tier-name">早鸟版</div>
             <div class="tier-price">¥9.9</div>
@@ -256,7 +260,7 @@ const genUnlockUrl = computed(() =>
             </ul>
             <button class="btn btn-primary btn-block" @click="openPay('earlybird', '接单护盾 早鸟版')">领取早鸟价</button>
           </div>
-          <div class="tier">
+          <div v-if="showPaidTiers" class="tier">
             <div class="tier-name">正式版</div>
             <div class="tier-price">¥39</div>
             <ul class="tier-points">
